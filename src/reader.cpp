@@ -152,7 +152,7 @@ bool process_file( std::string input, std::string output, std::ostream& log )
 
     boost::unique_future<bool> future_file = packaged_file.get_future();
     boost::thread file_open_thread( boost::move(packaged_file) );
-    boost::chrono::milliseconds wait_time(5000);
+    boost::chrono::milliseconds wait_time(10000);
     boost::future_status file_status = future_file.wait_for( wait_time );
 
     if ( file_status == boost::future_status::timeout )
